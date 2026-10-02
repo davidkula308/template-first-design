@@ -78,14 +78,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Plonk Studio — Digital marketing that pops" },
+      { name: "description", content: "Plonk is a playful digital marketing studio: brand, growth and content for companies that want to be impossible to ignore." },
+      { name: "author", content: "Plonk Studio" },
+      { property: "og:title", content: "Plonk Studio — Digital marketing that pops" },
+      { property: "og:description", content: "Strategy, design and campaigns for brands that want to be impossible to ignore." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
