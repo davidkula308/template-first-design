@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import { SiteNav, SiteFooter, ArrowIcon } from "@/components/site-chrome";
 import workBloom from "@/assets/work-bloom.jpg";
 import workLoop from "@/assets/work-loop.jpg";
 import workKickkit from "@/assets/work-kickkit.jpg";
@@ -19,144 +19,175 @@ export const Route = createFileRoute("/")({
 });
 
 const stats = [
-  { value: "140+", label: "brands launched", bg: "bg-pop text-primary-foreground", shadow: "shadow-[0_8px_0_var(--pop-deep)]" },
-  { value: "3.4x", label: "avg. campaign lift", bg: "bg-mint text-primary-foreground", shadow: "shadow-[0_8px_0_var(--mint-deep)]" },
-  { value: "9 yrs", label: "making noise", bg: "bg-sun text-ink", shadow: "shadow-[0_8px_0_var(--sun-deep)]" },
-  { value: "24/7", label: "client dashboard", bg: "bg-brand text-primary-foreground", shadow: "shadow-[0_8px_0_var(--brand-deep)]" },
+  { value: "140+", label: "brands launched" },
+  { value: "3.4x", label: "avg. campaign lift" },
+  { value: "9 yrs", label: "making noise" },
+  { value: "24/7", label: "client dashboard" },
 ];
 
 const services = [
-  { n: "01", title: "Brand & Design", desc: "Identities, sites and design systems that turn heads and hold up at scale.", chip: "bg-pop/15 text-pop" },
-  { n: "02", title: "Growth & Paid", desc: "Performance campaigns and SEO that keep the metrics pointing up, not sideways.", chip: "bg-mint/15 text-mint" },
-  { n: "03", title: "Content & Social", desc: "Always-on content engines built to earn attention and keep it, channel by channel.", chip: "bg-brand/15 text-brand" },
+  { n: "01", title: "Brand & Design", desc: "Identities, sites and design systems that turn heads and hold up at scale." },
+  { n: "02", title: "Growth & Paid", desc: "Performance campaigns and SEO that keep the metrics pointing up, not sideways." },
+  { n: "03", title: "Content & Social", desc: "Always-on content engines built to earn attention and keep it, channel by channel." },
 ];
 
 const work = [
-  { img: workBloom, tag: "Brand launch", tagColor: "text-pop", title: "Bloom Coffee Co.", result: "+212% repeat orders in 90 days." },
-  { img: workLoop, tag: "Paid + SEO", tagColor: "text-brand", title: "Loop Ledger", result: "Cut CAC by 38% across search." },
-  { img: workKickkit, tag: "Social engine", tagColor: "text-mint", title: "Kickkit Sneakers", result: "5M organic reach in one quarter." },
+  { img: workBloom, tag: "Brand launch", title: "Bloom Coffee Co.", result: "+212% repeat orders in 90 days." },
+  { img: workLoop, tag: "Paid + SEO", title: "Loop Ledger", result: "Cut CAC by 38% across search." },
+  { img: workKickkit, tag: "Social engine", title: "Kickkit Sneakers", result: "5M organic reach in one quarter." },
 ];
+
+const cta = "group relative inline-flex items-center gap-3 bg-primary px-9 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90";
+const ghost = "inline-flex items-center gap-3 border border-border px-9 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-foreground hover:text-background";
 
 function HomePage() {
   return (
-    <div className="min-h-screen bg-cream font-body text-ink">
+    <div className="min-h-screen bg-background font-body text-foreground">
       <SiteNav />
 
       {/* HERO */}
-      <section className="mx-auto max-w-7xl px-5 pt-10 pb-14 md:px-8 md:pt-16">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-mint/15 px-3.5 py-2 text-xs font-bold uppercase tracking-widest text-mint">
-              Digital marketing studio
-            </span>
-            <h1 className="mt-6 font-display text-6xl font-semibold leading-[0.92] md:text-8xl">
-              We make brands <span className="text-pop">pop</span> off the page.
-            </h1>
-            <p className="mt-6 max-w-md text-lg font-medium text-ink/70">
-              Strategy, design and campaigns for brands that want to be impossible to ignore. Big ideas, shipped fast.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link to="/contact" className="rounded-full bg-sun px-7 py-4 font-display text-lg font-semibold text-ink shadow-[0_6px_0_var(--sun-deep)] transition-transform hover:-translate-y-0.5">
-                Start a project
-              </Link>
-              <Link to="/work" className="rounded-full border-2 border-ink px-7 py-4 font-display text-lg font-semibold text-ink transition-colors hover:bg-ink hover:text-cream">
-                See our work
-              </Link>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((s) => (
-              <div key={s.label} className={`rounded-3xl p-5 ${s.bg} ${s.shadow}`}>
-                <p className="font-display text-4xl font-semibold">{s.value}</p>
-                <p className="mt-1 text-sm font-semibold">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="border-y-4 border-ink/10 bg-sun/20">
-        <div className="mx-auto max-w-7xl px-5 py-14 md:px-8">
-          <h2 className="font-display text-3xl font-semibold md:text-5xl">What we do</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {services.map((s) => (
-              <div key={s.n} className="rounded-3xl border-2 border-ink/10 bg-card p-7 transition hover:-translate-y-1">
-                <span className={`grid size-14 place-items-center rounded-2xl font-display text-2xl font-bold ${s.chip}`}>{s.n}</span>
-                <h3 className="mt-5 font-display text-2xl font-semibold">{s.title}</h3>
-                <p className="mt-2 font-medium text-ink/70">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SELECTED WORK */}
-      <section className="mx-auto max-w-7xl px-5 py-14 md:px-8">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="font-display text-3xl font-semibold md:text-5xl">Selected work</h2>
-          <Link to="/work" className="whitespace-nowrap text-sm font-bold text-brand hover:underline">
-            View all case studies
+      <section className="mx-auto max-w-6xl px-6 pb-24 pt-24 text-center md:px-8 md:pt-32">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">
+          Digital Marketing Studio
+        </span>
+        <h1 className="mt-8 font-display text-6xl italic leading-[1.02] tracking-tight md:text-8xl">
+          We make brands pop off the page.
+        </h1>
+        <p className="mx-auto mt-8 max-w-xl text-lg font-light leading-relaxed text-muted-foreground">
+          Strategy, design and campaigns for brands that want to be impossible to ignore. Big ideas, shipped fast.
+        </p>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Link to="/contact" className={cta}>
+            Start a project <ArrowIcon />
+          </Link>
+          <Link to="/work" className={ghost}>
+            See our work
           </Link>
         </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {work.map((w) => (
-            <div key={w.title} className="overflow-hidden rounded-3xl border-2 border-ink/10 bg-card">
-              <img src={w.img} alt={w.title} loading="lazy" width={1024} height={768} className="aspect-[4/3] w-full object-cover" />
-              <div className="p-6">
-                <p className={`text-xs font-bold uppercase tracking-widest ${w.tagColor}`}>{w.tag}</p>
-                <h3 className="mt-2 font-display text-xl font-semibold">{w.title}</h3>
-                <p className="mt-1 text-sm font-medium text-ink/60">{w.result}</p>
-              </div>
+      </section>
+
+      {/* STATS */}
+      <section className="border-y border-border">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 md:grid-cols-4 md:divide-x md:divide-border">
+          {stats.map((s) => (
+            <div key={s.label} className="px-6 py-12 text-center">
+              <p className="font-display text-4xl md:text-5xl">{s.value}</p>
+              <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">{s.label}</p>
             </div>
           ))}
         </div>
       </section>
 
+      {/* SERVICES */}
+      <section className="mx-auto max-w-6xl px-6 py-24 md:px-8">
+        <div className="flex items-end justify-between gap-6 border-b border-border pb-8">
+          <h2 className="font-display text-4xl md:text-6xl">What we do</h2>
+          <span className="hidden text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground sm:block">
+            Services / 01–03
+          </span>
+        </div>
+        <div>
+          {services.map((s) => (
+            <div key={s.n} className="grid gap-4 border-b border-border py-12 md:grid-cols-[80px_1fr_1fr] md:items-baseline md:gap-8">
+              <span className="text-xs text-muted-foreground">{s.n}/</span>
+              <div>
+                <h3 className="font-display text-3xl md:text-4xl">{s.title}</h3>
+                <p className="mt-3 max-w-md leading-relaxed text-muted-foreground">{s.desc}</p>
+              </div>
+              <Link
+                to="/services"
+                className="group inline-flex items-center gap-3 self-start text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground md:justify-self-end"
+              >
+                Explore <ArrowIcon />
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SELECTED WORK */}
+      <section className="mx-auto max-w-6xl px-6 pb-24 md:px-8">
+        <div className="flex items-end justify-between gap-6 border-b border-border pb-8">
+          <h2 className="font-display text-4xl md:text-6xl">Selected work</h2>
+          <Link to="/work" className="whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground">
+            View all
+          </Link>
+        </div>
+        <div className="mt-16 grid gap-x-16 gap-y-20 md:grid-cols-2">
+          {work.map((w, i) => (
+            <Link key={w.title} to="/work" className={`group block ${i % 2 === 1 ? "md:mt-24" : ""}`}>
+              <div className="aspect-[4/5] w-full overflow-hidden border border-border bg-muted">
+                <img
+                  src={w.img}
+                  alt={w.title}
+                  loading="lazy"
+                  width={1024}
+                  height={768}
+                  className="h-full w-full object-cover grayscale transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:grayscale-0"
+                />
+              </div>
+              <div className="mt-6 flex items-baseline justify-between">
+                <h3 className="font-display text-2xl">{w.title}</h3>
+                <span className="text-[10px] text-muted-foreground">0{i + 1}</span>
+              </div>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                {w.tag} — {w.result}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* CLIENT PLATFORM */}
-      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-8">
-        <div className="grid items-center gap-10 rounded-[2rem] bg-ink p-8 text-cream md:p-12 lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="border-y border-border bg-muted">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-24 md:px-8 lg:grid-cols-2">
           <div>
-            <span className="inline-flex rounded-full bg-pop px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary-foreground">
-              Client platform
-            </span>
-            <h2 className="mt-5 font-display text-4xl font-semibold leading-tight md:text-5xl">
-              Your whole engagement, in one bright dashboard.
+            <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">Client platform</span>
+            <h2 className="mt-6 font-display text-4xl italic leading-tight md:text-5xl">
+              Your whole engagement, in one quiet dashboard.
             </h2>
-            <p className="mt-4 max-w-sm font-medium text-cream/70">
-              Track active projects, invoices and campaign metrics in a single playful workspace built for how agencies actually work.
+            <p className="mt-5 max-w-md font-light leading-relaxed text-muted-foreground">
+              Track active projects, invoices and campaign metrics in a single refined workspace built for how agencies actually work.
             </p>
-            <Link to="/login" className="mt-7 inline-block rounded-full bg-sun px-7 py-4 font-display font-semibold text-ink shadow-[0_6px_0_var(--sun-deep)] transition-transform hover:-translate-y-0.5">
-              Log in to your space
+            <Link to="/login" className={`${cta} mt-8`}>
+              Log in to your space <ArrowIcon />
             </Link>
           </div>
-          <div className="rounded-3xl bg-cream p-5 text-ink shadow-2xl">
-            <div className="flex items-center justify-between">
-              <p className="font-display font-semibold">Dashboard</p>
-              <span className="text-xs font-bold text-ink/50">October 2026</span>
+          <div className="border border-border bg-card p-6 shadow-sm">
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em]">Dashboard</p>
+              <span className="text-xs font-light text-muted-foreground">October 2026</span>
             </div>
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              <div className="rounded-2xl bg-mint/15 p-4">
-                <p className="text-xs font-bold text-ink/50">Active projects</p>
-                <p className="font-display text-3xl font-semibold">3</p>
+            <div className="mt-5 grid grid-cols-2 gap-4">
+              <div className="border border-border p-5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Active projects</p>
+                <p className="mt-2 font-display text-4xl">3</p>
               </div>
-              <div className="rounded-2xl bg-pop/15 p-4">
-                <p className="text-xs font-bold text-ink/50">Invoices due</p>
-                <p className="font-display text-3xl font-semibold">$4,200</p>
+              <div className="border border-border p-5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Invoices due</p>
+                <p className="mt-2 font-display text-4xl">$4,200</p>
               </div>
             </div>
-            <div className="mt-3 space-y-2">
-              <div className="flex items-center justify-between rounded-2xl bg-card p-3.5">
-                <span className="text-sm font-semibold">Q4 Brand Refresh</span>
-                <span className="rounded-full bg-sun/40 px-2.5 py-1 text-xs font-bold text-ink">In progress</span>
+            <div className="mt-4 space-y-3">
+              <div className="flex items-center justify-between border border-border p-4">
+                <span className="text-sm font-medium">Q4 Brand Refresh</span>
+                <span className="border border-border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">In progress</span>
               </div>
-              <div className="flex items-center justify-between rounded-2xl bg-card p-3.5">
-                <span className="text-sm font-semibold">Paid Social Sprint</span>
-                <span className="rounded-full bg-mint/30 px-2.5 py-1 text-xs font-bold text-ink">On track</span>
+              <div className="flex items-center justify-between border border-border p-4">
+                <span className="text-sm font-medium">Paid Social Sprint</span>
+                <span className="border border-border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">On track</span>
               </div>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* CLOSING CTA */}
+      <section className="mx-auto max-w-6xl px-6 py-32 text-center md:px-8">
+        <h2 className="font-display text-5xl italic leading-tight md:text-7xl">Let's define your digital presence.</h2>
+        <Link to="/contact" className={`${cta} mt-12`}>
+          Inquire now <ArrowIcon />
+        </Link>
       </section>
 
       <SiteFooter />

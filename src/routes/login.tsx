@@ -1,5 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+import { ArrowIcon } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -20,23 +21,27 @@ function LoginPage() {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="flex min-h-screen flex-col bg-cream font-body text-ink">
-      <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 md:px-8">
-        <Link to="/" className="font-display text-2xl font-semibold tracking-tight">
-          Plonk<span className="text-pop">.</span>
-        </Link>
-        <Link to="/" className="text-sm font-semibold text-ink/60 hover:text-brand">← Back to site</Link>
-      </nav>
+    <div className="flex min-h-screen flex-col bg-background font-body text-foreground">
+      <header className="border-b border-border">
+        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6 md:px-8">
+          <Link to="/" className="font-display text-3xl tracking-tight">
+            Plonk<span className="italic">.</span>
+          </Link>
+          <Link to="/" className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground">
+            ← Back to site
+          </Link>
+        </nav>
+      </header>
 
-      <main className="flex flex-1 items-center justify-center px-5 pb-16">
+      <main className="flex flex-1 items-center justify-center px-6 pb-24">
         <div className="w-full max-w-md">
-          <div className="rounded-[2rem] border-2 border-ink/10 bg-card p-8 shadow-2xl md:p-10">
-            <span className="inline-flex rounded-full bg-pop/15 px-3.5 py-2 text-xs font-bold uppercase tracking-widest text-pop">Client platform</span>
-            <h1 className="mt-5 font-display text-4xl font-semibold">Welcome back.</h1>
-            <p className="mt-2 font-medium text-ink/60">Your projects, invoices and metrics are waiting.</p>
+          <div className="border border-border bg-card p-10 md:p-12">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">Client platform</span>
+            <h1 className="mt-5 font-display text-4xl italic">Welcome back.</h1>
+            <p className="mt-3 font-light text-muted-foreground">Your projects, invoices and metrics are waiting.</p>
 
             <form
-              className="mt-8 space-y-5"
+              className="mt-10 space-y-6"
               onSubmit={(e) => {
                 e.preventDefault();
                 setLoading(true);
@@ -44,20 +49,39 @@ function LoginPage() {
               }}
             >
               <div>
-                <label htmlFor="login-email" className="text-sm font-bold text-ink/70">Email</label>
-                <input id="login-email" type="email" required className="mt-1.5 w-full rounded-2xl border-2 border-ink/10 bg-cream px-4 py-3 font-medium outline-none focus:border-brand" placeholder="you@company.com" />
+                <label htmlFor="login-email" className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Email</label>
+                <input
+                  id="login-email"
+                  type="email"
+                  required
+                  className="mt-2 w-full border border-input bg-background px-4 py-3 text-sm font-light outline-none transition-colors focus:border-foreground"
+                  placeholder="you@company.com"
+                />
               </div>
               <div>
-                <label htmlFor="login-password" className="text-sm font-bold text-ink/70">Password</label>
-                <input id="login-password" type="password" required className="mt-1.5 w-full rounded-2xl border-2 border-ink/10 bg-cream px-4 py-3 font-medium outline-none focus:border-brand" placeholder="••••••••" />
+                <label htmlFor="login-password" className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Password</label>
+                <input
+                  id="login-password"
+                  type="password"
+                  required
+                  className="mt-2 w-full border border-input bg-background px-4 py-3 text-sm font-light outline-none transition-colors focus:border-foreground"
+                  placeholder="••••••••"
+                />
               </div>
-              <button type="submit" disabled={loading} className="w-full rounded-full bg-brand px-7 py-4 font-display text-lg font-semibold text-primary-foreground shadow-[0_6px_0_var(--brand-deep)] transition-transform hover:-translate-y-0.5 disabled:opacity-60">
-                {loading ? "Opening your space…" : "Log in"}
+              <button
+                type="submit"
+                disabled={loading}
+                className="group inline-flex w-full items-center justify-center gap-3 bg-primary px-9 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
+              >
+                {loading ? "Opening your space…" : <>Log in <ArrowIcon /></>}
               </button>
             </form>
 
-            <p className="mt-6 text-center text-sm font-semibold text-ink/50">
-              Not a client yet? <Link to="/contact" className="text-brand hover:underline">Start a project</Link>
+            <p className="mt-8 border-t border-border pt-6 text-center text-sm font-light text-muted-foreground">
+              Not a client yet?{" "}
+              <Link to="/contact" className="font-medium text-foreground underline underline-offset-4">
+                Start a project
+              </Link>
             </p>
           </div>
         </div>

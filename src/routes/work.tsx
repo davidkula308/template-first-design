@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import { SiteNav, SiteFooter, ArrowIcon } from "@/components/site-chrome";
 import workBloom from "@/assets/work-bloom.jpg";
 import workLoop from "@/assets/work-loop.jpg";
 import workKickkit from "@/assets/work-kickkit.jpg";
@@ -22,7 +22,6 @@ const cases = [
   {
     img: workBloom,
     tag: "Brand launch",
-    tagColor: "text-pop",
     title: "Bloom Coffee Co.",
     result: "+212% repeat orders in 90 days.",
     detail: "Full identity, packaging and launch campaign for a specialty roaster entering three new cities.",
@@ -31,7 +30,6 @@ const cases = [
   {
     img: workLoop,
     tag: "Paid + SEO",
-    tagColor: "text-brand",
     title: "Loop Ledger",
     result: "Cut CAC by 38% across search.",
     detail: "Rebuilt the paid search account and content hub for a fintech scaling past its first 10k users.",
@@ -40,7 +38,6 @@ const cases = [
   {
     img: workKickkit,
     tag: "Social engine",
-    tagColor: "text-mint",
     title: "Kickkit Sneakers",
     result: "5M organic reach in one quarter.",
     detail: "An always-on short-form content engine that turned a sneaker drop brand into a community.",
@@ -48,50 +45,64 @@ const cases = [
   },
 ];
 
+const cta = "group relative inline-flex items-center gap-3 bg-primary px-9 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90";
+
 function WorkPage() {
   return (
-    <div className="min-h-screen bg-cream font-body text-ink">
+    <div className="min-h-screen bg-background font-body text-foreground">
       <SiteNav />
-      <section className="mx-auto max-w-7xl px-5 pt-10 pb-14 md:px-8 md:pt-16">
-        <span className="inline-flex rounded-full bg-pop/15 px-3.5 py-2 text-xs font-bold uppercase tracking-widest text-pop">Selected work</span>
-        <h1 className="mt-6 max-w-3xl font-display text-5xl font-semibold leading-[0.95] md:text-7xl">
-          Proof, not <span className="text-brand">promises</span>.
+
+      <section className="mx-auto max-w-6xl px-6 pb-20 pt-24 text-center md:px-8 md:pt-32">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">Selected Work</span>
+        <h1 className="mt-8 font-display text-6xl italic leading-none tracking-tight md:text-8xl">
+          Proof, not promises.
         </h1>
-        <p className="mt-6 max-w-md text-lg font-medium text-ink/70">
+        <p className="mx-auto mt-8 max-w-lg text-lg font-light leading-relaxed text-muted-foreground">
           Every project below shipped on time and moved a number that matters.
         </p>
       </section>
 
-      <section className="mx-auto max-w-7xl space-y-10 px-5 pb-16 md:px-8">
-        {cases.map((c, i) => (
-          <article key={c.title} className={`grid items-center gap-8 overflow-hidden rounded-3xl border-2 border-ink/10 bg-card lg:grid-cols-2 ${i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""}`}>
-            <div className="p-4 lg:p-6">
-              <img src={c.img} alt={c.title} loading="lazy" width={1024} height={768} className="aspect-[4/3] w-full rounded-2xl object-cover" />
-            </div>
-            <div className="p-7 lg:p-10">
-              <p className={`text-xs font-bold uppercase tracking-widest ${c.tagColor}`}>{c.tag}</p>
-              <h2 className="mt-2 font-display text-3xl font-semibold md:text-4xl">{c.title}</h2>
-              <p className="mt-3 font-medium text-ink/70">{c.detail}</p>
-              <div className="mt-6 grid grid-cols-3 gap-3">
+      <section className="mx-auto max-w-6xl px-6 pb-24 md:px-8">
+        <div className="grid gap-x-16 gap-y-24 md:grid-cols-2">
+          {cases.map((c, i) => (
+            <article key={c.title} className={i % 2 === 1 ? "md:mt-24" : ""}>
+              <div className="aspect-[4/5] w-full overflow-hidden border border-border bg-muted">
+                <img
+                  src={c.img}
+                  alt={c.title}
+                  loading="lazy"
+                  width={1024}
+                  height={768}
+                  className="h-full w-full object-cover grayscale transition-all duration-1000 ease-in-out group-hover:scale-105 group-hover:grayscale-0"
+                />
+              </div>
+              <div className="mt-8 flex items-baseline justify-between">
+                <h2 className="font-display text-3xl">{c.title}</h2>
+                <span className="text-[10px] text-muted-foreground">0{i + 1}</span>
+              </div>
+              <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{c.tag}</p>
+              <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">{c.detail}</p>
+              <div className="mt-6 grid grid-cols-3 divide-x divide-border border-y border-border">
                 {c.stats.map(([v, l]) => (
-                  <div key={l} className="rounded-2xl bg-sun/20 p-3 text-center">
-                    <p className="font-display text-xl font-semibold">{v}</p>
-                    <p className="text-xs font-bold text-ink/50">{l}</p>
+                  <div key={l} className="px-4 py-4 text-center">
+                    <p className="font-display text-2xl">{v}</p>
+                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{l}</p>
                   </div>
                 ))}
               </div>
-              <p className="mt-5 text-sm font-bold text-brand">{c.result}</p>
-            </div>
-          </article>
-        ))}
+              <p className="mt-4 text-sm font-medium">{c.result}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-16 text-center md:px-8">
-        <h2 className="font-display text-4xl font-semibold md:text-5xl">Want numbers like these?</h2>
-        <Link to="/contact" className="mt-8 inline-block rounded-full bg-sun px-8 py-4 font-display text-lg font-semibold text-ink shadow-[0_6px_0_var(--sun-deep)] transition-transform hover:-translate-y-0.5">
-          Start a project
+      <section className="mx-auto max-w-6xl px-6 pb-32 text-center md:px-8">
+        <h2 className="font-display text-4xl italic leading-tight md:text-6xl">Want numbers like these?</h2>
+        <Link to="/contact" className={`${cta} mt-10`}>
+          Start a project <ArrowIcon />
         </Link>
       </section>
+
       <SiteFooter />
     </div>
   );
