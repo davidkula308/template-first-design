@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter, ArrowIcon } from "@/components/site-chrome";
+import { HeroVideos } from "@/components/hero-videos";
+import { HomeSections } from "@/components/home-sections";
 import workBloom from "@/assets/work-bloom.jpg";
 import workLoop from "@/assets/work-loop.jpg";
 import workKickkit from "@/assets/work-kickkit.jpg";
@@ -46,7 +48,9 @@ function HomePage() {
       <SiteNav />
 
       {/* HERO */}
-      <section className="mx-auto max-w-6xl px-6 pb-24 pt-24 text-center md:px-8 md:pt-32">
+      <section className="relative overflow-hidden">
+        <HeroVideos />
+        <div className="relative mx-auto max-w-6xl px-6 pb-24 pt-24 text-center md:px-8 md:pt-32">
         <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">
           Digital Marketing Studio
         </span>
@@ -63,6 +67,7 @@ function HomePage() {
           <Link to="/work" className={ghost}>
             See our work
           </Link>
+        </div>
         </div>
       </section>
 
@@ -181,6 +186,8 @@ function HomePage() {
           </div>
         </div>
       </section>
+      <HomeSections />
+
 
       {/* CLOSING CTA */}
       <section className="mx-auto max-w-6xl px-6 py-32 text-center md:px-8">
