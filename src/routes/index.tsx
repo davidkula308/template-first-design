@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter, ArrowIcon } from "@/components/site-chrome";
+import { HeroVideos } from "@/components/hero-videos";
+import { HomeSections } from "@/components/home-sections";
 import workBloom from "@/assets/work-bloom.jpg";
 import workLoop from "@/assets/work-loop.jpg";
 import workKickkit from "@/assets/work-kickkit.jpg";
@@ -46,11 +48,13 @@ function HomePage() {
       <SiteNav />
 
       {/* HERO */}
-      <section className="mx-auto max-w-6xl px-6 pb-24 pt-24 text-center md:px-8 md:pt-32">
+      <section className="relative overflow-hidden">
+        <HeroVideos />
+        <div className="relative mx-auto max-w-6xl px-6 pb-24 pt-24 text-center md:px-8 md:pt-32">
         <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">
           Digital Marketing Studio
         </span>
-        <h1 className="mt-8 font-display text-6xl italic leading-[1.02] tracking-tight md:text-8xl">
+        <h1 className="mt-8 font-display text-5xl italic leading-[1.02] tracking-tight md:text-7xl">
           We make brands pop off the page.
         </h1>
         <p className="mx-auto mt-8 max-w-xl text-lg font-light leading-relaxed text-muted-foreground">
@@ -63,6 +67,7 @@ function HomePage() {
           <Link to="/work" className={ghost}>
             See our work
           </Link>
+        </div>
         </div>
       </section>
 
@@ -181,10 +186,12 @@ function HomePage() {
           </div>
         </div>
       </section>
+      <HomeSections />
+
 
       {/* CLOSING CTA */}
       <section className="mx-auto max-w-6xl px-6 py-32 text-center md:px-8">
-        <h2 className="font-display text-5xl italic leading-tight md:text-7xl">Let's define your digital presence.</h2>
+        <h2 className="font-display text-5xl italic leading-tight md:text-6xl">Let's define your digital presence.</h2>
         <Link to="/contact" className={`${cta} mt-12`}>
           Inquire now <ArrowIcon />
         </Link>

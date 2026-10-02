@@ -31,7 +31,7 @@ function AboutPage() {
 
       <section className="mx-auto max-w-6xl px-6 pb-16 pt-24 md:px-8 md:pt-32">
         <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">About us</span>
-        <h1 className="mt-8 max-w-3xl font-display text-5xl italic leading-[1.02] tracking-tight md:text-7xl">
+        <h1 className="mt-8 max-w-3xl font-display text-5xl italic leading-[1.02] tracking-tight md:text-6xl">
           A small studio with a big volume knob.
         </h1>
         <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-muted-foreground">
