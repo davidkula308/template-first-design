@@ -13,62 +13,93 @@ export function SiteNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-8">
-      <Link to="/" className="font-display text-2xl font-semibold tracking-tight text-ink">
-        Plonk<span className="text-pop">.</span>
-      </Link>
-      <div className="hidden items-center gap-8 text-[15px] font-semibold text-ink md:flex">
-        {links.map((l) => (
-          <Link key={l.to} to={l.to} className="transition-colors hover:text-brand">
-            {l.label}
-          </Link>
-        ))}
-      </div>
-      <div className="flex items-center gap-3">
-        <Link
-          to="/login"
-          className="inline-flex items-center gap-1 rounded-full bg-brand px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-[0_5px_0_var(--brand-deep)] transition-transform hover:-translate-y-0.5"
-        >
-          Client Login
+    <header className="border-b border-border">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-8">
+        <Link to="/" className="font-display text-3xl tracking-tight text-foreground">
+          Plonk<span className="italic">.</span>
         </Link>
-        <button
-          className="grid size-10 place-items-center rounded-full border-2 border-ink/10 text-ink md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
-      </div>
+        <div className="hidden items-center gap-10 md:flex">
+          {links.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
+        <div className="flex items-center gap-3">
+          <Link
+            to="/login"
+            className="hidden bg-primary px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90 md:inline-flex"
+          >
+            Client Login
+          </Link>
+          <button
+            className="text-foreground md:hidden"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
+        </div>
+      </nav>
       {open && (
-        <div className="absolute inset-x-4 top-20 z-50 rounded-3xl border-2 border-ink/10 bg-card p-6 shadow-2xl md:hidden">
-          <div className="flex flex-col gap-4 text-lg font-semibold text-ink">
+        <div className="border-t border-border bg-background md:hidden">
+          <div className="mx-auto flex max-w-6xl flex-col px-6 py-6 md:px-8">
             {links.map((l) => (
-              <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="hover:text-brand">
+              <Link
+                key={l.to}
+                to={l.to}
+                onClick={() => setOpen(false)}
+                className="border-b border-border py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground last:border-b-0"
+              >
                 {l.label}
               </Link>
             ))}
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="mt-4 bg-primary px-6 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground"
+            >
+              Client Login
+            </Link>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
 
 export function SiteFooter() {
   return (
-    <footer className="border-t-4 border-ink/10 bg-cream">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 py-10 md:flex-row md:px-8">
-        <Link to="/" className="font-display text-2xl font-semibold text-ink">
-          Plonk<span className="text-pop">.</span>
+    <footer className="border-t border-border">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 py-16 md:px-8">
+        <Link to="/" className="font-display text-4xl tracking-tight text-foreground">
+          Plonk<span className="italic">.</span>
         </Link>
-        <div className="flex flex-wrap justify-center gap-6 text-sm font-semibold text-ink/60">
-          <a href="mailto:hello@plonk.studio" className="hover:text-brand">hello@plonk.studio</a>
-          <Link to="/work" className="hover:text-brand">Work</Link>
-          <Link to="/services" className="hover:text-brand">Services</Link>
-          <Link to="/login" className="hover:text-brand">Client Login</Link>
+        <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          <a href="mailto:hello@plonk.studio" className="transition-colors hover:text-foreground">hello@plonk.studio</a>
+          <Link to="/work" className="transition-colors hover:text-foreground">Work</Link>
+          <Link to="/services" className="transition-colors hover:text-foreground">Services</Link>
+          <Link to="/login" className="transition-colors hover:text-foreground">Client Login</Link>
         </div>
-        <p className="text-xs font-semibold text-ink/40">© 2026 Plonk Studio</p>
+        <p className="text-xs font-light text-muted-foreground">© 2026 Plonk Studio</p>
       </div>
     </footer>
+  );
+}
+
+export function ArrowIcon({ className = "h-3.5 w-3.5" }: { className?: string }) {
+  return (
+    <svg
+      className={`transition-transform duration-300 group-hover:translate-x-1 ${className}`}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
   );
 }

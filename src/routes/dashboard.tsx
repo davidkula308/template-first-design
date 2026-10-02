@@ -16,9 +16,9 @@ export const Route = createFileRoute("/dashboard")({
 });
 
 const projects = [
-  { name: "Q4 Brand Refresh", status: "In progress", statusBg: "bg-sun/40", progress: "w-2/3", bar: "bg-sun" },
-  { name: "Paid Social Sprint", status: "On track", statusBg: "bg-mint/30", progress: "w-4/5", bar: "bg-mint" },
-  { name: "Holiday Campaign", status: "Kickoff", statusBg: "bg-pop/20", progress: "w-1/5", bar: "bg-pop" },
+  { name: "Q4 Brand Refresh", status: "In progress", progress: "w-2/3" },
+  { name: "Paid Social Sprint", status: "On track", progress: "w-4/5" },
+  { name: "Holiday Campaign", status: "Kickoff", progress: "w-1/5" },
 ];
 
 const invoices = [
@@ -27,64 +27,74 @@ const invoices = [
 ];
 
 const metrics = [
-  { label: "Reach this month", value: "842k", delta: "+18%", bg: "bg-mint/15" },
-  { label: "Avg. ROAS", value: "4.1x", delta: "+0.6", bg: "bg-sun/25" },
-  { label: "New followers", value: "12.4k", delta: "+9%", bg: "bg-pop/15" },
+  { label: "Reach this month", value: "842k", delta: "+18%" },
+  { label: "Avg. ROAS", value: "4.1x", delta: "+0.6" },
+  { label: "New followers", value: "12.4k", delta: "+9%" },
 ];
+
+const statusPill = "border border-border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground";
 
 function DashboardPage() {
   return (
-    <div className="min-h-screen bg-cream font-body text-ink">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-8">
-        <Link to="/" className="font-display text-2xl font-semibold tracking-tight">
-          Plonk<span className="text-pop">.</span>
-        </Link>
-        <div className="flex items-center gap-4">
-          <span className="hidden text-sm font-semibold text-ink/60 sm:block">Bloom Coffee Co.</span>
-          <Link to="/login" className="rounded-full border-2 border-ink px-4 py-2 text-sm font-bold transition-colors hover:bg-ink hover:text-cream">
-            Log out
+    <div className="min-h-screen bg-background font-body text-foreground">
+      <header className="border-b border-border">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-8">
+          <Link to="/" className="font-display text-3xl tracking-tight">
+            Plonk<span className="italic">.</span>
           </Link>
-        </div>
-      </nav>
-
-      <main className="mx-auto max-w-7xl px-5 pb-16 md:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <h1 className="font-display text-4xl font-semibold md:text-5xl">Good morning, Ada.</h1>
-            <p className="mt-2 font-medium text-ink/60">Here's everything happening across your engagement — October 2026.</p>
+          <div className="flex items-center gap-5">
+            <span className="hidden text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:block">
+              Bloom Coffee Co.
+            </span>
+            <Link
+              to="/login"
+              className="border border-border px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-foreground hover:text-background"
+            >
+              Log out
+            </Link>
           </div>
-          <span className="rounded-full bg-mint/15 px-4 py-2 text-xs font-bold uppercase tracking-widest text-mint">All systems go</span>
+        </nav>
+      </header>
+
+      <main className="mx-auto max-w-6xl px-6 pb-24 pt-14 md:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-8">
+          <div>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">Client space</span>
+            <h1 className="mt-4 font-display text-4xl italic md:text-6xl">Good morning, Ada.</h1>
+            <p className="mt-3 font-light text-muted-foreground">Here's everything happening across your engagement — October 2026.</p>
+          </div>
+          <span className={statusPill}>All systems go</span>
         </div>
 
         {/* Metrics */}
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-3">
           {metrics.map((m) => (
-            <div key={m.label} className={`rounded-3xl border-2 border-ink/10 p-6 ${m.bg}`}>
-              <p className="text-xs font-bold uppercase tracking-widest text-ink/50">{m.label}</p>
-              <div className="mt-2 flex items-baseline gap-2">
-                <p className="font-display text-4xl font-semibold">{m.value}</p>
-                <span className="rounded-full bg-mint/30 px-2 py-0.5 text-xs font-bold">{m.delta}</span>
+            <div key={m.label} className="bg-card p-8">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{m.label}</p>
+              <div className="mt-3 flex items-baseline gap-3">
+                <p className="font-display text-5xl">{m.value}</p>
+                <span className="text-xs font-medium text-muted-foreground">{m.delta}</span>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           {/* Projects */}
-          <section className="rounded-3xl border-2 border-ink/10 bg-card p-7">
-            <div className="flex items-center justify-between">
-              <h2 className="font-display text-2xl font-semibold">Active projects</h2>
-              <span className="text-xs font-bold text-ink/50">3 running</span>
+          <section className="border border-border bg-card p-8">
+            <div className="flex items-center justify-between border-b border-border pb-5">
+              <h2 className="font-display text-2xl">Active projects</h2>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">3 running</span>
             </div>
-            <div className="mt-5 space-y-4">
+            <div className="mt-6 space-y-5">
               {projects.map((p) => (
-                <div key={p.name} className="rounded-2xl bg-cream p-4">
+                <div key={p.name} className="border-b border-border pb-5 last:border-b-0 last:pb-0">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold">{p.name}</span>
-                    <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${p.statusBg}`}>{p.status}</span>
+                    <span className="text-sm font-medium">{p.name}</span>
+                    <span className={statusPill}>{p.status}</span>
                   </div>
-                  <div className="mt-3 h-2 rounded-full bg-ink/10">
-                    <div className={`h-full rounded-full ${p.progress} ${p.bar}`} />
+                  <div className="mt-3 h-1 w-full bg-muted">
+                    <div className={`h-full bg-foreground ${p.progress}`} />
                   </div>
                 </div>
               ))}
@@ -92,39 +102,39 @@ function DashboardPage() {
           </section>
 
           {/* Invoices */}
-          <section className="rounded-3xl border-2 border-ink/10 bg-card p-7">
-            <div className="flex items-center justify-between">
-              <h2 className="font-display text-2xl font-semibold">Invoices</h2>
-              <span className="rounded-full bg-pop/15 px-3 py-1 text-xs font-bold text-pop">$4,200 due</span>
+          <section className="border border-border bg-card p-8">
+            <div className="flex items-center justify-between border-b border-border pb-5">
+              <h2 className="font-display text-2xl">Invoices</h2>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">$4,200 due</span>
             </div>
-            <div className="mt-5 space-y-3">
+            <div className="mt-6 space-y-4">
               {invoices.map((inv) => (
-                <div key={inv.id} className="flex items-center justify-between rounded-2xl bg-cream p-4">
+                <div key={inv.id} className="flex items-center justify-between border-b border-border pb-4 last:border-b-0">
                   <div>
-                    <p className="text-sm font-bold">{inv.label}</p>
-                    <p className="text-xs font-semibold text-ink/50">{inv.id} · {inv.due}</p>
+                    <p className="text-sm font-medium">{inv.label}</p>
+                    <p className="mt-1 text-xs font-light text-muted-foreground">{inv.id} · {inv.due}</p>
                   </div>
-                  <span className="font-display text-lg font-semibold">{inv.amount}</span>
+                  <span className="font-display text-xl">{inv.amount}</span>
                 </div>
               ))}
             </div>
-            <button className="mt-5 w-full rounded-full bg-sun px-6 py-3.5 font-display font-semibold text-ink shadow-[0_5px_0_var(--sun-deep)] transition-transform hover:-translate-y-0.5">
+            <button className="mt-6 w-full bg-primary px-6 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90">
               Pay outstanding invoices
             </button>
           </section>
         </div>
 
         {/* Deliverables */}
-        <section className="mt-6 rounded-3xl bg-ink p-7 text-cream">
+        <section className="mt-8 bg-foreground p-8 text-background">
           <div className="flex items-center justify-between">
-            <h2 className="font-display text-2xl font-semibold">Latest deliverables</h2>
-            <span className="text-xs font-bold text-cream/50">Updated today</span>
+            <h2 className="font-display text-2xl">Latest deliverables</h2>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] opacity-60">Updated today</span>
           </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {["Homepage hero concepts v2", "October content calendar", "Q3 performance report"].map((d) => (
-              <div key={d} className="flex items-center justify-between rounded-2xl bg-cream/10 p-4">
-                <span className="text-sm font-semibold">{d}</span>
-                <span className="rounded-full bg-mint px-2.5 py-1 text-xs font-bold text-ink">New</span>
+              <div key={d} className="flex items-center justify-between gap-3 border border-background/20 p-4">
+                <span className="text-sm font-light">{d}</span>
+                <span className="border border-background/40 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.15em]">New</span>
               </div>
             ))}
           </div>
