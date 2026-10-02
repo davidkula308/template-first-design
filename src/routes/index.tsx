@@ -50,7 +50,7 @@ function HomePage() {
         <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">
           Digital Marketing Studio
         </span>
-        <h1 className="mt-8 font-display text-6xl italic leading-[1.02] tracking-tight md:text-6xl">
+        <h1 className="mt-8 font-display text-5xl italic leading-[1.02] tracking-tight md:text-7xl">
           We make brands pop off the page.
         </h1>
         <p className="mx-auto mt-8 max-w-xl text-lg font-light leading-relaxed text-muted-foreground">

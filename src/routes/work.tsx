@@ -54,7 +54,7 @@ function WorkPage() {
 
       <section className="mx-auto max-w-6xl px-6 pb-20 pt-24 text-center md:px-8 md:pt-32">
         <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">Selected Work</span>
-        <h1 className="mt-8 font-display text-6xl italic leading-none tracking-tight md:text-6xl">
+        <h1 className="mt-8 font-display text-5xl italic leading-none tracking-tight md:text-7xl">
           Proof, not promises.
         </h1>
         <p className="mx-auto mt-8 max-w-lg text-lg font-light leading-relaxed text-muted-foreground">
