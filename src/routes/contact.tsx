@@ -32,7 +32,7 @@ function ContactPage() {
         <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">Start a project</span>
-            <h1 className="mt-8 font-display text-5xl italic leading-[1.02] tracking-tight md:text-7xl">
+            <h1 className="mt-8 font-display text-5xl italic leading-[1.02] tracking-tight md:text-6xl">
               Let's make some noise.
             </h1>
             <p className="mt-6 max-w-md text-lg font-light leading-relaxed text-muted-foreground">
